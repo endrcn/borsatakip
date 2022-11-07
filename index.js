@@ -4,6 +4,7 @@ function sendRequest(url) {
 
     xhr.open('GET', url, true)
     xhr.send(post);
+    
 
     xhr.onload = function () {
         if (this.status === 200) {
