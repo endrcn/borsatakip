@@ -1,0 +1,11 @@
+{
+    "name": "Borsa Takip",
+    "version": "1.0.0",
+    "description": "BIST100 Borsa Takip",
+    "manifest_version": 3,
+    "author": "Ender CAN",
+    "action": {
+        "default_popup": "index.html",
+        "default_title": "Borsa Takip"
+    }
+}
