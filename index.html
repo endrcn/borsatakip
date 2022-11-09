@@ -10,20 +10,22 @@
 <body>
     <div class="container mt-3" style="width: 450px;">
         <h2 class="text-center">Borsa Takip</h2>
-        <button class="btn btn-primary" id="btn">Test</button>
+        <!-- <button class="btn btn-primary" id="btn">Test</button> -->
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Hisse Adı</th>
+                    <th>Fiyat</th>
                     <th>Günlük Kazanç Oranı</th>
                     <th>Kazanç</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="stocks">
                 <tr>
                     <td id="stock"></td>
-                    <td id="rate"></td>
                     <td id="amount"></td>
+                    <td id="rate"></td>
+                    <td id="earning"></td>
                 </tr>
             </tbody>
         </table>
