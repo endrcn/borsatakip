@@ -28,9 +28,9 @@ async function fetchData() {
     for (let i = 0; i < 10; i++) {
         stockTable.innerHTML += `<tr>
         <td>${stocks[i].name}</td>
-        <td>${stocks[i].value}</td>
-        <td>${stocks[i].rate}</td>
-        <td>${stocks[i].earning}</td>
+        <td>₺${stocks[i].value}</td>
+        <td>%${stocks[i].rate}</td>
+        <td>₺${stocks[i].earning}</td>
     </tr>`
     }
 
