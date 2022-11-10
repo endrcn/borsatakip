@@ -10,17 +10,19 @@ async function fetchData() {
     let stocks = [];
 
     for (let i = 0; i < stockCells.length; i++) {
-        console.log("TITLE:", stockCells[i].cells[0].innerText.split("\n")[2].trim());
-        console.log("VALUE:", stockCells[i].cells[2].children[0].innerText.trim());
-        console.log("RATE:", stockCells[i].cells[2].children[1].innerText.match(/\(% (.*?)\)/)[1].trim());
-        console.log("EARNING:", stockCells[i].cells[2].children[1].innerText.match(/([0-9,]+)\s*\(% .*?\)/)[1].trim());
+        let name = stockCells[i].cells[0].innerText.split("\n")[2].trim();
+        let value = parseFloat(stockCells[i].cells[2].children[0].innerText.replace(",", ".").trim());
+        let rate = parseFloat(stockCells[i].cells[2].children[1].innerText.match(/\(% (.*?)\)/)[1].replace(",", ".").trim());
+        let earning = parseFloat(stockCells[i].cells[2].children[1].innerText.match(/([0-9,]+)\s*\(% .*?\)/)[1].replace(",", ".").trim())
 
-        stocks.push({
-            name: stockCells[i].cells[0].innerText.split("\n")[2].trim(),
-            value: parseFloat(stockCells[i].cells[2].children[0].innerText.replace(",", ".").trim()),
-            rate: parseFloat(stockCells[i].cells[2].children[1].innerText.match(/\(% (.*?)\)/)[1].replace(",", ".").trim()),
-            earning: parseFloat(stockCells[i].cells[2].children[1].innerText.match(/([0-9,]+)\s*\(% .*?\)/)[1].replace(",", ".").trim())
-        });
+        if (rate <= 10) {
+            stocks.push({
+                name,
+                value,
+                rate,
+                earning
+            });
+        }
     }
 
     stocks.sort((a, b) => b.rate - a.rate);
