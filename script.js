@@ -27,7 +27,7 @@ async function fetchData() {
 
     stocks.sort((a, b) => b.rate - a.rate);
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 15; i++) {
         stockTable.innerHTML += `<tr>
         <td>${stocks[i].name}</td>
         <td>₺${stocks[i].value}</td>
