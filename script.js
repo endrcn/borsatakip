@@ -11,11 +11,12 @@ async function fetchData() {
 
     for (let i = 0; i < stockCells.length; i++) {
         let name = stockCells[i].cells[0].innerText.split("\n")[2].trim();
+        let updateTime = stockCells[i].cells[0].innerText.split("\n")[3].trim();
         let value = parseFloat(stockCells[i].cells[2].children[0].innerText.replace(",", ".").trim());
         let rate = parseFloat(stockCells[i].cells[2].children[1].innerText.match(/\(% (.*?)\)/)[1].replace(",", ".").trim());
         let earning = parseFloat(stockCells[i].cells[2].children[1].innerText.match(/([0-9,]+)\s*\(% .*?\)/)[1].replace(",", ".").trim())
 
-        if (rate <= 10) {
+        if (rate <= 10 && updateTime != "23:59:50") {
             stocks.push({
                 name,
                 value,
