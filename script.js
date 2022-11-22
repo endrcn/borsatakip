@@ -1,4 +1,14 @@
-const stockTable = document.querySelector("#stocks");
+const stockTableBody = document.querySelector("#stocks");
+const stockTable = document.querySelector("#stock_table");
+const twGraphContainer = document.querySelector("#tw_graph_container");
+const twGraph = document.querySelector("#tw_graph");
+const btnBack = document.querySelector("#back");
+const stockTitle = document.querySelector("#stock_title");
+
+btnBack.addEventListener("click", (event) => {
+    twGraphContainer.style.display = "none";
+    stockTable.style.display = "block";
+});
 
 async function fetchData() {
     const res = await fetch("https://canlidoviz.com/borsa");
@@ -29,14 +39,46 @@ async function fetchData() {
     stocks.sort((a, b) => b.rate - a.rate);
 
     for (let i = 0; i < 15; i++) {
-        stockTable.innerHTML += `<tr>
-        <td>${stocks[i].name}</td>
+        stockTableBody.innerHTML += `<tr>
+        <td><a href="#" id="stockCode_${stocks[i].name}">${stocks[i].name}</a></td>
         <td>₺${stocks[i].value}</td>
         <td>%${stocks[i].rate}</td>
         <td>₺${stocks[i].earning}</td>
     </tr>`
     }
 
+    for (let i = 0; i < 15; i++) {
+        document.getElementById("stockCode_" + stocks[i].name).addEventListener('click', (event) => {
+            openGraph(event.target.innerText);
+        });
+    }
+
+
+}
+
+function openGraph(code) {
+    twGraphContainer.style.display = "block";
+    stockTable.style.display = "none";
+    stockTitle.innerText = code;
+    let ender = new TradingView.widget(
+        {
+            "width": "100%",
+            "height": 300,
+            "symbol": "BIST:" + code,
+            "interval": "D",
+            "timezone": "Europe/Istanbul",
+            "theme": "light",
+            "style": "2",
+            "locale": "tr",
+            "toolbar_bg": "#f1f3f6",
+            "enable_publishing": false,
+            "hide_top_toolbar": true,
+            "hide_legend": true,
+            "save_image": false,
+            "container_id": "tw_graph"
+        }
+    );
+    console.log(ender);
 }
 
 fetchData();
