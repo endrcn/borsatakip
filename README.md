@@ -4,6 +4,11 @@ BIST100 hisselerinden yükselişteki hisseleri günlük olarak bildiren chrome e
 
 <img width="450" alt="image" src="https://user-images.githubusercontent.com/7888585/200943083-c9c27fa8-51ff-43cb-8ac3-5da1e5fa917a.png">
 
+TradingView üzerinden hissenin fiyat geçmişini görüntülenebilir.
+
+![image](https://user-images.githubusercontent.com/7888585/203373790-f007bbcf-65ef-45ec-8374-92b9f69d6be7.png)
+
+
 # Kurulum
 
 1. Kodları indirin.
